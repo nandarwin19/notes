@@ -2,7 +2,8 @@
 
 **z** sounds like [ts]
 **ei** sounds like [ay]  
-double consonant is pronounced faster  
+**w** what? => was?
+double consonant is pronounced faster eg: ll
 **r** as a rolled throaty gurgling [rrr]
 or a short reduced [ah] sound when at the end of the word  
 In **v**, there are two sounds. One is original german words, F and next one is borrowed words, W.
@@ -24,8 +25,14 @@ eins
 Zwei
 drei
 vier
+fünf
 sechs
 sieben
+acht
+neun
+zehn
+elf
+zwölf
 
 ---
 
@@ -40,3 +47,9 @@ Numeric data type, can be used for mathematical operations
 **DECIMAL** data type is ideal for storing student grades
 Can store fixed-point numbers with specified precision and scale
 Can store up to 38 digits of precision
+
+## 9/5/2024
+
+https://spiral-clematis-e11.notion.site/250-Free-English-Resources-78e95be00f874914927bb70a9912b180
+
+https://www.germanwithjay.com/starterpack
