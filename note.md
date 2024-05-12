@@ -105,7 +105,9 @@ Wie geht es dir? - How are you? (informal)
 
 https://qr.ae/psOf2K
 
-**life is a comedy for those who think and a tragedy for those who feel**
+### book
+
+life is a comedy for those who think and a tragedy for those who feel
 
 batcher knife
 confronation
@@ -142,3 +144,73 @@ wallflower - a shy person who stands alone near the wall at social events: She w
 dissipate - disappear, vanish -> the fog dissipated, the anger dissipated
 dissipate energy
 gregarious - sociable, outgoing -> gregarious person, gregarious personality
+
+https://www.similarweb.com/
+
+Wer? - Who?
+Wie? - How?
+Woher? - Where from?
+Wo? - Where?
+Was? - What?
+Wie bitte? - Excuse me
+
+"Wie ist dein Name?' would literally be translated as 'How is your
+name?'. But since that sounds very silly in English, we translate it as 'What
+is your name?'."
+
+---
+
+ich
+du
+er, sie, es
+wir
+ihr
+sie
+Sie
+duzen
+siezen
+Du kannst mich duzen.
+
+Once a day, one part of it
+https://youtu.be/zMO9Ew8n7MM?si=uko6zmJ9sSGqhOm1
+
+---
+
+https://www.heylama.com/blog/free-online-german-language-courses-from-a1-to-c1
+
+### Present tense
+
+kochen - to cook
+en - infinitive ending
+
+ich - e
+du - st
+er, sie, es - t
+wir - en
+ihr - t
+sie, Sie - en
+
+danke - thank you
+bitte - you are welcome, here you go
+danke schön - thank you very much
+danke sehr - thanks a lot
+tut mir leid - I am sorry
+entschuldigung - excuse me
+
+write down the words I learnt
+danke
+danke schön
+danke sehr
+bitte
+bitte schon
+bitte sehr
+gern geschehen
+tut mir leid
+enstchuldingung
+nichts zu danken
+
+https://www.linguee.com/
+
+
+
+
