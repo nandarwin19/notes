@@ -239,6 +239,8 @@ Basic Questions: Explaining Weaknesses
 
 ---
 
+# 13/5/24
+
 ## Need time management
 
 https://youtu.be/JQaQmsJIHJU?si=O-SnujwAo-aFqJge
@@ -336,11 +338,11 @@ das Fräulein - miss
 das Zentrum - center
 das Hotel - hotel
 
-![Alt Text](image.png)
+![Alt Text](/image/image.png)
 
 ## Mein vs Meine
 
-![Alt Text](img1.jpg)
+![Alt Text](/image/img1.jpg)
 
 verb "sein" (to be):
 • ich bin
@@ -372,3 +374,180 @@ chimney - a tall pipe used to carry smoke out of a building
 four-beautiful-doll - needn't add "s" after "doll" because adj can't be pulral
 
 • I have a black 1990 calssial guiter with a white pickguard
+
+---
+
+# 14/5/24
+
+## Next.js font
+
+Next.js automatically optimizes fonts in the application when you use the next/font module. It downloads font files at build time and hosts them with your other static assets. This means when a user visits your application, there are no additional network requests for fonts which would impact performance.
+
+---
+
+```
+import { Inter } from 'next/font/google';
+
+export const inter = Inter({ subsets: ['latin'] });
+
+what is subset?
+By using a subset, you can reduce the size of the font file that needs to be loaded, which can improve the performance and loading times of your application.
+
+"Inter({ subsets: ['latin'] })" returns an object which is contained className. So we use like that
+
+<body className={`${inter.className} antialiased`}>{children}</body>
+
+```
+
+## The `<Image>` component
+
+Preventing layout shift automatically when images are loading.
+Resizing images to avoid shipping large images to devices with a smaller viewport.
+Lazy loading images by default (images load as they enter the viewport).
+Serving images in modern formats, like WebP and AVIF, when the browser supports it.
+
+quality
+
+quality={75} // {number 1-100}
+The quality of the optimized image, an integer between 1 and 100, where 100 is the best quality and therefore largest file size. Defaults to 75
+
+## That is called root segment, segment, leaf segment
+
+![Alt Text](/image/n1.jpg)
+
+## Link (import Link from 'next/link')
+
+Next.js automatically prefetches the code for the linked route in the background. By the time the user clicks the link, the code for the destination page will already be loaded in the background, and this is what makes the page transition near-instant!
+
+Server components allow you fetch data directly from your database.
+
+---
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js Learn](https://nextjs.org/learn)
+- [Next.js Blogs](https://nextjs.org/blog)
+
+Why might static rendering not be a good fit for a dashboard app?
+Because the application will not reflect the latest data changes
+When your data updates, you want to show the latest changes in your dashboard. Static Rendering is not a good fit for this use case.
+
+## What is Static Rendering?
+
+Faster Websites
+Reduced Server Load
+SEO
+
+## What is Dynamic Rendering?
+
+Real-Time Data
+User-Specific Content
+Request Time information
+
+```
+export async function fetchLatestInvoices() {
+noStore();
+// ...
+}
+
+```
+
+"Should not be cached" means responses should not be stored due to:
+
+- Sensitive information (e.g., passwords).
+- Dynamic data (e.g., stock prices).
+- User-specific data (e.g., personalized info).
+- Session-specific data (e.g., shopping carts).
+
+Use `no-store` to prevent caching and ensure up-to-date data from the server.
+
+Streaming in Next.js works with React's component model:
+
+At the page level with loading.tsx.
+For specific components with <Suspense>.
+
+## useSearchParams, usePathname
+
+useSearchParams- For example, the search params for this URL /dashboard/invoices?page=1&query=pending would look like this: {page: '1', query: 'pending'}.
+usePathname - For example, for the route /dashboard/invoices, usePathname would return '/dashboard/invoices'
+
+## defaultValue vs. value / Controlled vs. Uncontrolled
+
+If you're using state to manage the value of an input, you'd use the value attribute to make it a controlled component. This means React would manage the input's state.
+
+However, since you're not using state, you can use defaultValue. This means the native input will manage its own state. This is okay since you're saving the search query to the URL instead of state.
+
+---
+
+## useSearchParams() VS searchParams
+
+Use `useSearchParams()` for client-side access to avoid unnecessary server requests. Use the `searchParams` prop for server-side components to fetch data directly.
+
+## Debouncing
+
+Debouncing limits how often a function runs. It starts a timer on event trigger (e.g., keystroke). If another event occurs before the timer ends, the timer resets. The function runs only when the timer completes without interruption. By debouncing, you can reduce the number of requests sent to your database, thus saving resources.
+
+You can use "use-debounce"
+
+## What is wireframe vs UI?
+
+In summary, a wireframe is a blueprint of the structure and layout of a website or application, while UI design is the process of designing the visual elements and interactions of the user interface.
+
+The CSS Grid is useful for two-dimensional layout, providing tools for aligning elements across rows and columns, while the CSS Flexbox is useful for positioning items in a one-dimensional layout.
+
+## Gird
+
+```
+<div class="container">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+  <div class="item">Item 4</div>
+  <div class="item">Item 5</div>
+  <div class="item">Item 6</div>
+</div>
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 150px);
+  grid-gap: 10px;
+}
+```
+
+## Flexbox
+
+```
+<div class="container">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+</div>
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+```
+
+## [LEARN ADVANCED REACT]
+
+**Effect hooks** are useful for “side effects” such as fetching data or reacting to state changes.
+
+## What is porp drilling?
+
+The prop is “drilled” from a high-level component down through middle-level components down to a low-level component.
+
+## Why we will use Context API?
+
+because to get rid of prop drilling and unneccessary passing props
+
+## React Context
+
+• Prop drilling: Passing data through multiple components.
+• Context: Avoids prop drilling by providing shared state to child components.
+• Provider component: Wraps child components and provides access to state.
+• Consumer components: Subscribe to context value using useContext() hook.
+• State management: Providers can hold state and state updater functions.
+• Consider alternative state management options (Redux, useReducer, useState).
