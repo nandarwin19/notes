@@ -211,6 +211,164 @@ nichts zu danken
 
 https://www.linguee.com/
 
+---
 
+Job Interview English: Get Your Dream Job
+Tips: Aim high - believe in yourself
+Tips: Be yourself
+Tips: Examples - show > tell, use what you know
+Tips: Avoid misunderstanding => understand 100%, will make you hurt
+Tips: don't memorize - It makes your sound fake
+Tips: Being Memorable, be active, unique
+Building your resume tips:
 
+1. Clear and simple
+2. Key info is easy to see
+3. Info is relevant
+4. Templates are ok
+5. Spelling, punctuation = perfect
 
+Getting the Interview: Following Up
+Basic Questions: Explaining Strengths
+Basic Questions: Explaining Weaknesses
+
+- tell me about your weakness
+- I am not good at
+- I am not very good at
+  I lack experience in
+
+---
+
+## Need time management
+
+https://youtu.be/JQaQmsJIHJU?si=O-SnujwAo-aFqJge
+
+---
+
+die Mutter - mother
+der Vater - father
+die Eltern - parents
+der Mann - husband
+die Frau - wife
+die kinder - kids
+der sohn - son
+die Tochter - daughter
+der burder - brother
+die Schwester - sister
+die Großmutter, die Oma - grandmother
+der Großvater,der Opa - grandfather
+die Großeltern - grandparents
+die Geschwister - siblings
+die Tante - aunt
+der Onkel - uncle
+die Cousine - cousin (female)
+der Cousin - cousin (male)
+
+---
+
+https://learngerman.dw.com/de/nicos-weg/c-36519687
+
+https://docs.google.com/document/d/1J5PJK0qStw2DHQHdRHuKIfq_bJrZkFarQVT7fkz13tg/edit
+
+der - masuline
+die - feminine
+das - neutral
+die - plural
+
+## der masculine
+
+**for male people and professions**
+der Vater
+der Bruder
+der Arzt - doctor
+
+**weekdays, months and seasons**
+der Montag
+der Januar
+der Sommer
+
+**Words that end with -er**
+der Computer
+der Lehrer - teacher
+der Koffer - suitcase
+
+**Cars and alcoholic drinks**
+der BMW
+der Whiskey
+der Wein - wine
+Exception: das Bier - beer
+
+## Die feminine
+
+**for female people and professions**
+die Mutter
+die Schwester
+die Ärztin - doctor
+
+**Words ending in -heit and -keit**
+die Freiheit - freedom
+die Möglichkeit - possibility
+die Schwierigkeit - difficulty
+
+**words ending in -schaft**
+die Freundschaft - friendship
+die Mannschaft - team
+
+**Words ending in -ung**
+die Übung - exercise
+
+**words ending with -ur**
+die Natur - nature
+
+**words ending with -e**
+die Lampe - lamp
+die Tasche - bag
+
+### das neutral
+
+**all the words that end in -chen**
+das Mädchen - girl
+
+**all the words that end in -lein**
+das Fräulein - miss
+
+**Most Latin based words**
+das Zentrum - center
+das Hotel - hotel
+
+![Alt Text](image.png)
+
+## Mein vs Meine
+
+![Alt Text](img1.jpg)
+
+verb "sein" (to be):
+• ich bin
+• du bist
+• er, sie, es ist
+• wir sind
+• ihr seid
+• sie sind
+• Sie sind
+
+die sprache - language schpraa·cha
+sprechen - to speak, talk
+
+Welche Sprachen sprichst du? - What languages do you speak?
+
+---
+
+## Master Native English | Speaking Skills, Grammar, and More
+
+Keep in mind
+• Notes
+• practice
+
+physical
+nonphyiscal
+atmosphere
+cottage - a small simple house, typically one near a lake or beach
+chimney - a tall pipe used to carry smoke out of a building
+four-beautiful-doll - needn't add "s" after "doll" because adj can't be pulral
+
+• I have a black 1990 calssial guiter with a white pickguard
