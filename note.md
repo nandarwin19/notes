@@ -531,7 +531,7 @@ The CSS Grid is useful for two-dimensional layout, providing tools for aligning 
 
 ```
 
-## [LEARN ADVANCED REACT]
+## [LEARN ADVANCED REACT](https://www.codecademy.com/courses/learn-advanced-react)
 
 **Effect hooks** are useful for “side effects” such as fetching data or reacting to state changes.
 
@@ -551,3 +551,209 @@ because to get rid of prop drilling and unneccessary passing props
 • Consumer components: Subscribe to context value using useContext() hook.
 • State management: Providers can hold state and state updater functions.
 • Consider alternative state management options (Redux, useReducer, useState).
+
+### REACT ERROR BOUNDARIES
+
+You can use that popular library instead of creating your own error boundary
+Implementing react-error-boundary
+
+```
+import { ErrorBoundary } from 'react-error-boundary';
+
+function ErrorFallback({ error, resetErrorBoundary }) {
+  return (
+    <div>
+      <h2>An error occurred in the app!!</h2>
+      <p>Error: {error.message}</p>
+      <button onClick={resetErrorBoundary}>
+        Reset
+      </button>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <ErrorBoundary onError={logError} FallbackComponent={ErrorFallback}>
+      <MyComponent/>
+    </ErrorBoundary>
+  );
+}
+```
+
+### Passing Props to Fallback Components
+
+```
+function ErrorFallback({ error, resetErrorBoundary, newProp }) {
+  // Handle the error / resetErrorBoundary logic...
+  // But now we also have the newProp value!
+}
+
+// Later in some rendered JSX...
+<ErrorBoundary
+  FallbackComponent={(props) => (
+    <ErrorFallback {...props} newProp={"foo"} />
+  )}
+>
+```
+
+Error boundaries can catch errors that occur during rendering, in lifecycle methods, and in constructors of the whole tree below them. Error boundaries do not catch errors for event handlers, asynchronous code, server-side rendering, or errors thrown in the error boundary itself (rather than its children).
+
+**Example**
+
+```
+function ErrorFallback({ error, resetErrorBoundary, newMessage }) {
+  const handleReset = () => {
+    resetErrorBoundary();
+  };
+
+  // Use the newMessage prop to customize the error message
+  return (
+    <div>
+      <p>{newMessage || 'Oops, an error occurred!'}</p>
+      <p>Error details: {error.message}</p>
+      <button onClick={handleReset}>Reset</button>
+    </div>
+  );
+}
+```
+
+#### Where should error boundaries be used in a React application?
+
+As close as possible to the components that are potential sources of runtime errors.
+
+```
+import React from 'react';
+import { logError } from './error-logging-service';
+
+export default class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { error: null };
+    this.reset = this.reset.bind(this);
+    // bind reset function
+  }
+
+  // define reset function
+  reset() {
+      this.setState({error: null})
+  }
+  static getDerivedStateFromError(error) {
+    return { error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logError(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.error) {
+      return (
+        <div className="error">
+          <h2>An error was detected!</h2>
+           <button onClick={this.reset}>Reset</button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+```
+
+Do you know how to use React Profiler? react developer tools?
+
+### What is a higher-order component?
+
+A higher-order component is a design pattern where a component takes in a component and returns a new component with extra functionality.
+
+---
+
+# I need to learn React Optimization again
+
+---
+
+## [React Testing](https://www.codecademy.com/courses/learn-react-testing/)
+
+[Install Jest](https://jestjs.io/docs/getting-started)
+
+We need to match the following name conventions to run our tests:
+
+- files with names ending in .test.js
+- files with names ending in .spec.js
+- .js files within a **tests**/ directory
+
+```
+Our file structure will look like this:
+
+src/
+└── Button/
+    ├── Button.js
+    └── Button.test.js
+```
+
+### [command line flags](https://jestjs.io/docs/cli#reference)
+
+### .toBe() vs .toEqual (matcher method)
+
+The .toBe() matcher is used to compare simple data types for equality, while the .toEqual() matcher is used for deep equality comparisons
+
+```
+//file: recipes.test.js
+
+// import the function to test
+import { getIngredients } from "./recipes.js";
+
+it("Gets only the ingredients list for Pesto", () => {
+  //arrange
+  const pestoRecipe = {
+    'Basil': '2 cups',
+    'Pine Nuts': '2 tablespoons',
+    'Garlic': '2 cloves',
+    'Olive Oil': '0.5 cups',
+    'Grated Parmesan': '0.5 cups'
+  }
+  const expectedIngredients = ["Basil", "Pine Nuts", "Garlic", "Olive Oil", "Grated Parmesan"]
+
+  //act
+  const actualIngredients = getIngredients(pestoRecipe);
+
+  //assert
+  expect(actualIngredients).toEqual(expectedIngredients)
+});
+```
+
+### Testing async code with Jest (Done)
+
+```
+it("correctly fetches a list of countries", (done) => {
+  const inputLanguageCode = "es";
+  const expectedValue = "Argentina";
+
+  countryListLookup(inputLanguageCode, (result) => {
+    try {
+      expect(result).toBeDefined();
+      done()
+    } catch (error) {
+      done(error)
+    }
+  });
+});
+```
+
+### Testing async code with Jest (async, await)
+
+```
+it("correctly fetches a list of countries",  async () => {
+
+  const inputLanguageCode = "es";
+  const expectedValue ="Argentina";
+
+  const actualValue = await countryListLookup(inputLanguageCode);
+
+  expect(actualValue).toContain(expectedValue);       
+});
+```
+
+### When should I use `done()` and `async/await`?
+
+Although both are functionally similar, their uses can help make your test code more readable. You should use done() for asynchronous code that uses callbacks, while async/await is best suited for code that returns Promises. Choosing the appropriate method can help make your code more readable and easier to understand.
