@@ -1,11 +1,82 @@
+# Time Table from 17 - 31
+
+---
+
+Day 1 - 17/4/2024 - ?
+
+---
+
+There is 14 days left.
+sleep - 4 hrs [polyphasic sleeping](https://youtu.be/kiEBvvNpXxg?si=dH4dpWiAXrujD8Di)
+
+So I have 20 hrs.
+
+17 hrs studying - 238 hrs || 16 hrs studying - 224 hrs
+3 hrs or 4 hrs break
+
+```
+let userInput = prompt("How many hrs did you study today?");
+userInput = Number(userInput);
+if (userInput > 16) {
+alert("Great! You are on good way!");
+} else if (userInput < 16 && userInput > 10) {
+alert("Nice and you have to spend another next one month on studying.");
+} else {
+alert("You have to spend another next two months on studying haha");
+}
+```
+
+### 100 hrs + 100 hrs
+
+Burmese-Agriculture
+Portfolio
+Netflix GPT
+
+---
+
+### 100 hrs + 50 hrs
+
+Just reading for gaining knowledge
+
+_Read code again_
+
+_English practice 30 min a day_
+
+- [Getting Hired TOP](https://www.theodinproject.com/paths/full-stack-javascript/courses/getting-hired) (10 hrs)
+
+- [NodeJS](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs) (Just basic)
+
+- [Javascript](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript) (20 hrs)
+
+- [HTML and CSS](https://www.theodinproject.com/paths/full-stack-javascript/courses/intermediate-html-and-css) (2 hrs)
+
+- [Advanced HTML and CSS](https://www.theodinproject.com/paths/full-stack-javascript/courses/advanced-html-and-css) (2 hrs)
+
+- [React](https://www.theodinproject.com/paths/full-stack-javascript/courses/react) (61% done this course)
+
+---
+
+### CS (In June)
+
+```
+let userInput = prompt("Are you interesed in CS? (yes/no)");
+
+if (userInput === "yes") {
+alert("Great! Start enrolled in CS50.");
+} else {
+alert("That's okay!");
+}
+
+```
+
 ## 8/5/2024
 
 **z** sounds like [ts]
-**ei** sounds like [ay]  
+**ei** sounds like [ay]
 **w** what? => was?
 double consonant is pronounced faster eg: ll
 **r** as a rolled throaty gurgling [rrr]
-or a short reduced [ah] sound when at the end of the word  
+or a short reduced [ah] sound when at the end of the word
 In **v**, there are two sounds. One is original german words, F and next one is borrowed words, W.
 IE pronounces [eee] => long slow e
 **s** at the beginning of a word is pronounced as [z]
@@ -338,11 +409,11 @@ das Fräulein - miss
 das Zentrum - center
 das Hotel - hotel
 
-![Alt Text](/image/image.png)
+![Alt Text](./image/image.png)
 
 ## Mein vs Meine
 
-![Alt Text](/image/img1.jpg)
+![Alt Text](./image/img1.jpg)
 
 verb "sein" (to be):
 • ich bin
@@ -386,6 +457,7 @@ Next.js automatically optimizes fonts in the application when you use the next/f
 ---
 
 ```
+
 import { Inter } from 'next/font/google';
 
 export const inter = Inter({ subsets: ['latin'] });
@@ -413,7 +485,7 @@ The quality of the optimized image, an integer between 1 and 100, where 100 is t
 
 ## That is called root segment, segment, leaf segment
 
-![Alt Text](/image/n1.jpg)
+![Alt Text](./image/n1.jpg)
 
 ## Link (import Link from 'next/link')
 
@@ -444,6 +516,7 @@ User-Specific Content
 Request Time information
 
 ```
+
 export async function fetchLatestInvoices() {
 noStore();
 // ...
@@ -497,6 +570,7 @@ The CSS Grid is useful for two-dimensional layout, providing tools for aligning 
 ## Gird
 
 ```
+
 <div class="container">
   <div class="item">Item 1</div>
   <div class="item">Item 2</div>
@@ -507,16 +581,18 @@ The CSS Grid is useful for two-dimensional layout, providing tools for aligning 
 </div>
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 150px);
-  grid-gap: 10px;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(2, 150px);
+grid-gap: 10px;
 }
+
 ```
 
 ## Flexbox
 
 ```
+
 <div class="container">
   <div class="item">Item 1</div>
   <div class="item">Item 2</div>
@@ -524,10 +600,9 @@ The CSS Grid is useful for two-dimensional layout, providing tools for aligning 
 </div>
 
 .container {
-  display: flex;
-  justify-content: space-between;
+display: flex;
+justify-content: space-between;
 }
-
 
 ```
 
@@ -558,43 +633,49 @@ You can use that popular library instead of creating your own error boundary
 Implementing react-error-boundary
 
 ```
+
 import { ErrorBoundary } from 'react-error-boundary';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
-  return (
-    <div>
-      <h2>An error occurred in the app!!</h2>
-      <p>Error: {error.message}</p>
-      <button onClick={resetErrorBoundary}>
-        Reset
-      </button>
-    </div>
-  );
+return (
+
+<div>
+<h2>An error occurred in the app!!</h2>
+<p>Error: {error.message}</p>
+<button onClick={resetErrorBoundary}>
+Reset
+</button>
+</div>
+);
 }
 
 function App() {
-  return (
-    <ErrorBoundary onError={logError} FallbackComponent={ErrorFallback}>
-      <MyComponent/>
-    </ErrorBoundary>
-  );
+return (
+<ErrorBoundary onError={logError} FallbackComponent={ErrorFallback}>
+<MyComponent/>
+</ErrorBoundary>
+);
 }
+
 ```
 
 ### Passing Props to Fallback Components
 
 ```
+
 function ErrorFallback({ error, resetErrorBoundary, newProp }) {
-  // Handle the error / resetErrorBoundary logic...
-  // But now we also have the newProp value!
+// Handle the error / resetErrorBoundary logic...
+// But now we also have the newProp value!
 }
 
 // Later in some rendered JSX...
 <ErrorBoundary
-  FallbackComponent={(props) => (
-    <ErrorFallback {...props} newProp={"foo"} />
-  )}
+FallbackComponent={(props) => (
+<ErrorFallback {...props} newProp={"foo"} />
+)}
+
 >
+
 ```
 
 Error boundaries can catch errors that occur during rendering, in lifecycle methods, and in constructors of the whole tree below them. Error boundaries do not catch errors for event handlers, asynchronous code, server-side rendering, or errors thrown in the error boundary itself (rather than its children).
@@ -602,20 +683,23 @@ Error boundaries can catch errors that occur during rendering, in lifecycle meth
 **Example**
 
 ```
-function ErrorFallback({ error, resetErrorBoundary, newMessage }) {
-  const handleReset = () => {
-    resetErrorBoundary();
-  };
 
-  // Use the newMessage prop to customize the error message
-  return (
-    <div>
-      <p>{newMessage || 'Oops, an error occurred!'}</p>
-      <p>Error details: {error.message}</p>
-      <button onClick={handleReset}>Reset</button>
-    </div>
-  );
+function ErrorFallback({ error, resetErrorBoundary, newMessage }) {
+const handleReset = () => {
+resetErrorBoundary();
+};
+
+// Use the newMessage prop to customize the error message
+return (
+
+<div>
+<p>{newMessage || 'Oops, an error occurred!'}</p>
+<p>Error details: {error.message}</p>
+<button onClick={handleReset}>Reset</button>
+</div>
+);
 }
+
 ```
 
 #### Where should error boundaries be used in a React application?
@@ -623,41 +707,44 @@ function ErrorFallback({ error, resetErrorBoundary, newMessage }) {
 As close as possible to the components that are potential sources of runtime errors.
 
 ```
+
 import React from 'react';
 import { logError } from './error-logging-service';
 
 export default class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { error: null };
-    this.reset = this.reset.bind(this);
-    // bind reset function
-  }
-
-  // define reset function
-  reset() {
-      this.setState({error: null})
-  }
-  static getDerivedStateFromError(error) {
-    return { error };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logError(error, errorInfo);
-  }
-
-  render() {
-    if (this.state.error) {
-      return (
-        <div className="error">
-          <h2>An error was detected!</h2>
-           <button onClick={this.reset}>Reset</button>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
+constructor(props) {
+super(props);
+this.state = { error: null };
+this.reset = this.reset.bind(this);
+// bind reset function
 }
+
+// define reset function
+reset() {
+this.setState({error: null})
+}
+static getDerivedStateFromError(error) {
+return { error };
+}
+
+componentDidCatch(error, errorInfo) {
+logError(error, errorInfo);
+}
+
+render() {
+if (this.state.error) {
+return (
+
+<div className="error">
+<h2>An error was detected!</h2>
+<button onClick={this.reset}>Reset</button>
+</div>
+);
+}
+return this.props.children;
+}
+}
+
 ```
 
 Do you know how to use React Profiler? react developer tools?
@@ -683,12 +770,14 @@ We need to match the following name conventions to run our tests:
 - .js files within a **tests**/ directory
 
 ```
+
 Our file structure will look like this:
 
 src/
 └── Button/
-    ├── Button.js
-    └── Button.test.js
+├── Button.js
+└── Button.test.js
+
 ```
 
 ### [command line flags](https://jestjs.io/docs/cli#reference)
@@ -698,62 +787,133 @@ src/
 The .toBe() matcher is used to compare simple data types for equality, while the .toEqual() matcher is used for deep equality comparisons
 
 ```
+
 //file: recipes.test.js
 
 // import the function to test
 import { getIngredients } from "./recipes.js";
 
 it("Gets only the ingredients list for Pesto", () => {
-  //arrange
-  const pestoRecipe = {
-    'Basil': '2 cups',
-    'Pine Nuts': '2 tablespoons',
-    'Garlic': '2 cloves',
-    'Olive Oil': '0.5 cups',
-    'Grated Parmesan': '0.5 cups'
-  }
-  const expectedIngredients = ["Basil", "Pine Nuts", "Garlic", "Olive Oil", "Grated Parmesan"]
+//arrange
+const pestoRecipe = {
+'Basil': '2 cups',
+'Pine Nuts': '2 tablespoons',
+'Garlic': '2 cloves',
+'Olive Oil': '0.5 cups',
+'Grated Parmesan': '0.5 cups'
+}
+const expectedIngredients = ["Basil", "Pine Nuts", "Garlic", "Olive Oil", "Grated Parmesan"]
 
-  //act
-  const actualIngredients = getIngredients(pestoRecipe);
+//act
+const actualIngredients = getIngredients(pestoRecipe);
 
-  //assert
-  expect(actualIngredients).toEqual(expectedIngredients)
+//assert
+expect(actualIngredients).toEqual(expectedIngredients)
 });
+
 ```
 
 ### Testing async code with Jest (Done)
 
 ```
-it("correctly fetches a list of countries", (done) => {
-  const inputLanguageCode = "es";
-  const expectedValue = "Argentina";
 
-  countryListLookup(inputLanguageCode, (result) => {
-    try {
-      expect(result).toBeDefined();
-      done()
-    } catch (error) {
-      done(error)
-    }
-  });
+it("correctly fetches a list of countries", (done) => {
+const inputLanguageCode = "es";
+const expectedValue = "Argentina";
+
+countryListLookup(inputLanguageCode, (result) => {
+try {
+expect(result).toBeDefined();
+done()
+} catch (error) {
+done(error)
+}
 });
+});
+
 ```
 
 ### Testing async code with Jest (async, await)
 
 ```
-it("correctly fetches a list of countries",  async () => {
 
-  const inputLanguageCode = "es";
-  const expectedValue ="Argentina";
+it("correctly fetches a list of countries", async () => {
 
-  const actualValue = await countryListLookup(inputLanguageCode);
+const inputLanguageCode = "es";
+const expectedValue ="Argentina";
 
-  expect(actualValue).toContain(expectedValue);       
+const actualValue = await countryListLookup(inputLanguageCode);
+
+expect(actualValue).toContain(expectedValue);
 });
+
 ```
 
 ### When should I use `done()` and `async/await`?
 
 Although both are functionally similar, their uses can help make your test code more readable. You should use done() for asynchronous code that uses callbacks, while async/await is best suited for code that returns Promises. Choosing the appropriate method can help make your code more readable and easier to understand.
+
+# 16/5/2024
+
+### What is assertion library and test runner?
+
+The assertion library is the set of functions for making assertions, like expect().toBe(). The test runner is the command-line tool for executing Jest test files.
+
+### [Jest assertions](https://jestjs.io/docs/expect)
+
+### [Queries](https://testing-library.com/docs/queries/about/)
+
+```
+
+Mimicking user interactions in ReactJS involves simulating user events like clicks, form submissions, and keypresses during testing. React Testing Library, Jest, and Enzyme are commonly used for this purpose.
+
+Example with React Testing Library:
+
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import MyComponent from './MyComponent';
+
+test('simulates click event', async () => {
+const handleClick = jest.fn();
+render(<MyComponent onClick={handleClick} />);
+await userEvent.click(screen.getByRole('button'));
+expect(handleClick).toHaveBeenCalledTimes(1);
+});
+
+```
+
+### What is React Testing Library (RTL)?
+
+React Testing Library (RTL) is a library for testing React components. It encourages testing components from a user perspective by focusing on interactions and DOM elements rather than component internals. RTL provides utilities to query and interact with DOM nodes in a way that resembles how users would interact with the application.
+
+Key features:
+
+Emphasizes testing behavior over implementation.
+Provides methods for querying DOM elements by their roles, text, labels, etc.
+Supports asynchronous testing for components that rely on state changes or API calls.
+
+    How is data sent from one computer to another?
+    What is the relationship between a browser and a server?
+    How is code turned into the experience that users see in their browsers?
+    How has the web and web development changed from its invention to today?
+
+### What is servers and what is browsers?
+
+At Codecademy, we have servers that store lesson data and our servers are sending this lesson data to your client device.
+
+---
+
+For answering qestions,
+
+[HTML](./image/html1.jpg)
+The H and T in HTML stands for hypertext. Hypertext is text that is linked to other text. This diagram shows different websites that are connected to each other through links, which are represented by arrows.
+
+When we set the href attribute on an anchor tag (abbreviated to <a>)
+
+---
+
+bit => 0,1
+
+```
+
+```
