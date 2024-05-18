@@ -2,17 +2,9 @@
 
 ---
 
-Day 1 - 17/4/2024 - ?
+Day 1 - 17/4/2024 - 13 hrs
 
 ---
-
-There is 14 days left.
-sleep - 4 hrs [polyphasic sleeping](https://youtu.be/kiEBvvNpXxg?si=dH4dpWiAXrujD8Di)
-
-So I have 20 hrs.
-
-17 hrs studying - 238 hrs || 16 hrs studying - 224 hrs
-3 hrs or 4 hrs break
 
 ```
 let userInput = prompt("How many hrs did you study today?");
@@ -22,19 +14,20 @@ alert("Great! You are on good way!");
 } else if (userInput < 16 && userInput > 10) {
 alert("Nice and you have to spend another next one month on studying.");
 } else {
-alert("You have to spend another next two months on studying haha");
+alert("You have to spend another next two months on studying");
 }
 ```
 
-### 100 hrs + 100 hrs
+### projects
 
 Burmese-Agriculture
-Portfolio
-Netflix GPT
+simple portfolio
+GSAP and threejs portfolio
+FlixGPT
 
 ---
 
-### 100 hrs + 50 hrs
+### learn
 
 Just reading for gaining knowledge
 

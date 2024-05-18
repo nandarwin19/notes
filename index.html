@@ -10,11 +10,63 @@
     <div class="container">
       <div class="preview">
         <h2>Just</h2>
-
+        <div class="markdown-content">
+          <a href="#" id="get-hired-link">Get Hired Notes</a>
+          <div id="get-hired-content"></div>
+        </div>
+        <div class="markdown-content">
+          <a href="#" id="notes-link">Notes for front-end</a>
+          <div id="notes-content"></div>
+        </div>
         <div id="preview"></div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
     <script src="script.js"></script>
+    <script>
+      const getHiredLink = document.getElementById("get-hired-link");
+      const getHiredContent = document.getElementById("get-hired-content");
+      let isGetHiredContentVisible = false;
+
+      getHiredLink.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (isGetHiredContentVisible) {
+          getHiredContent.innerHTML = "";
+        } else {
+          fetch("get-hired.md")
+            .then((response) => response.text())
+            .then((markdown) => {
+              const html = marked.parse(markdown);
+
+              getHiredContent.innerHTML = html;
+            });
+        }
+
+        isGetHiredContentVisible = !isGetHiredContentVisible;
+      });
+
+      const notesLink = document.getElementById("notes-link");
+      const notesContent = document.getElementById("notes-content");
+      let isNotesContentVisible = false;
+
+      notesLink.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (isNotesContentVisible) {
+          notesContent.innerHTML = "";
+        } else {
+          fetch("notee.md")
+            .then((response) => response.text())
+            .then((markdown) => {
+              const html = marked.parse(markdown);
+
+              notesContent.innerHTML = html;
+            });
+        }
+
+        isNotesContentVisible = !isNotesContentVisible;
+      });
+    </script>
   </body>
 </html>
