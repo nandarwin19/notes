@@ -18,7 +18,10 @@
           <a href="#" id="notes-link">Notes for front-end</a>
           <div id="notes-content"></div>
         </div>
-        <div id="preview"></div>
+        <div class="markdown-content">
+          <a href="#" id="timetable">Timetable and previous notes</a>
+          <div id="timet-content"></div>
+        </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
@@ -66,6 +69,28 @@
         }
 
         isNotesContentVisible = !isNotesContentVisible;
+      });
+
+      const timeTableLink = document.getElementById("timetable");
+      const timeTableContent = document.getElementById("timet-content");
+      let isTimeTableContentVisible = false;
+
+      timeTableLink.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (isTimeTableContentVisible) {
+          timeTableContent.innerHTML = "";
+        } else {
+          fetch("note.md")
+            .then((response) => response.text())
+            .then((markdown) => {
+              const html = marked.parse(markdown);
+
+              timeTableContent.innerHTML = html;
+            });
+        }
+
+        isTimeTableContentVisible = !isTimeTableContentVisible;
       });
     </script>
   </body>
