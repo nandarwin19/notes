@@ -11,86 +11,93 @@
       <div class="preview">
         <h2>Just</h2>
         <div class="markdown-content">
-          <a href="#" id="get-hired-link">Get Hired Notes</a>
+          <a href="#" data-target="timet-content" data-source="note.md"
+            >Timetable and previous notes</a
+          >
+          <div id="timet-content"></div>
+        </div>
+        <br />
+        <div class="markdown-content">
+          <a href="#" data-target="get-hired-content" data-source="get-hired.md"
+            >Get Hired Notes</a
+          >
           <div id="get-hired-content"></div>
         </div>
+        <br />
         <div class="markdown-content">
-          <a href="#" id="notes-link">Notes for front-end</a>
+          <a href="#" data-target="notes-content" data-source="notee.md"
+            >Notes for front-end</a
+          >
           <div id="notes-content"></div>
         </div>
+        <br />
+
         <div class="markdown-content">
-          <a href="#" id="timetable">Timetable and previous notes</a>
-          <div id="timet-content"></div>
+          <a href="#" data-target="one-thing-content" data-source="one-thing.md"
+            >One Thing</a
+          >
+          <div id="one-thing-content"></div>
+        </div>
+        <br />
+        <div class="markdown-content">
+          <a href="#" data-target="voice-content" data-source="recording.md"
+            >Voice messages</a
+          >
+          <div id="voice-content"></div>
+        </div>
+        <br />
+        <div class="markdown-content">
+          <a href="#" data-target="german-content" data-source="german.md"
+            >German</a
+          >
+          <div id="german-content"></div>
+        </div>
+        <br />
+        <div class="markdown-content">
+          <a href="#" data-target="english-content" data-source="english.md"
+            >English</a
+          >
+          <div id="english-content"></div>
+        </div>
+        <br />
+        <div class="markdown-content">
+          <a href="#" data-target="spanish-content" data-source="spanish.md"
+            >Spanish</a
+          >
+          <div id="spanish-content"></div>
+        </div>
+        <br />
+        <div class="markdown-content">
+          <a href="#" data-target="untold-content" data-source="untold.md"
+            >Damn</a
+          >
+          <div id="untold-content"></div>
         </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
     <script src="script.js"></script>
     <script>
-      const getHiredLink = document.getElementById("get-hired-link");
-      const getHiredContent = document.getElementById("get-hired-content");
-      let isGetHiredContentVisible = false;
+      document.querySelectorAll(".markdown-content a").forEach((link) => {
+        let isContentVisible = false;
+        let target = document.getElementById(link.dataset.target);
 
-      getHiredLink.addEventListener("click", (event) => {
-        event.preventDefault();
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
 
-        if (isGetHiredContentVisible) {
-          getHiredContent.innerHTML = "";
-        } else {
-          fetch("get-hired.md")
-            .then((response) => response.text())
-            .then((markdown) => {
-              const html = marked.parse(markdown);
+          if (isContentVisible) {
+            target.innerHTML = "";
+          } else {
+            fetch(link.dataset.source)
+              .then((response) => response.text())
+              .then((markdown) => {
+                const html = marked.parse(markdown);
+                target.innerHTML = html;
+              });
+          }
 
-              getHiredContent.innerHTML = html;
-            });
-        }
-
-        isGetHiredContentVisible = !isGetHiredContentVisible;
-      });
-
-      const notesLink = document.getElementById("notes-link");
-      const notesContent = document.getElementById("notes-content");
-      let isNotesContentVisible = false;
-
-      notesLink.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        if (isNotesContentVisible) {
-          notesContent.innerHTML = "";
-        } else {
-          fetch("notee.md")
-            .then((response) => response.text())
-            .then((markdown) => {
-              const html = marked.parse(markdown);
-
-              notesContent.innerHTML = html;
-            });
-        }
-
-        isNotesContentVisible = !isNotesContentVisible;
-      });
-
-      const timeTableLink = document.getElementById("timetable");
-      const timeTableContent = document.getElementById("timet-content");
-      let isTimeTableContentVisible = false;
-
-      timeTableLink.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        if (isTimeTableContentVisible) {
-          timeTableContent.innerHTML = "";
-        } else {
-          fetch("note.md")
-            .then((response) => response.text())
-            .then((markdown) => {
-              const html = marked.parse(markdown);
-
-              timeTableContent.innerHTML = html;
-            });
-        }
-
-        isTimeTableContentVisible = !isTimeTableContentVisible;
+          isContentVisible = !isContentVisible;
+        });
       });
     </script>
   </body>

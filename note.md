@@ -2,7 +2,19 @@
 
 ---
 
-Day 1 - 17/4/2024 - 13 hrs
+Day 1 - 17/5/2024 - 13 hrs
+
+Day 2 - 18/5/2024 - 6 hrs
+
+Day 3 - 19/5/2024 - 4 hrs (My back)
+
+Day 4 - 20/5/2024 - 4 hrs (My back hurted and my wifi was hell shit)
+
+Fk the wifi
+
+---
+
+Day 1 - 5/27/2024 - 10 hrs
 
 ---
 
