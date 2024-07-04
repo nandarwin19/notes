@@ -12,92 +12,26 @@
         <h2>Just</h2>
         <div class="markdown-content">
           <a href="#" data-target="timet-content" data-source="note.md"
-            >Timetable and previous notes</a
+            >Notes</a
           >
           <div id="timet-content"></div>
         </div>
         <br />
-        <div class="markdown-content">
-          <a href="#" data-target="get-hired-content" data-source="get-hired.md"
-            >Get Hired Notes</a
-          >
-          <div id="get-hired-content"></div>
-        </div>
-        <br />
-        <div class="markdown-content">
-          <a href="#" data-target="notes-content" data-source="notee.md"
-            >Notes for front-end</a
-          >
-          <div id="notes-content"></div>
-        </div>
-        <br />
-
-        <div class="markdown-content">
-          <a href="#" data-target="one-thing-content" data-source="one-thing.md"
-            >One Thing</a
-          >
-          <div id="one-thing-content"></div>
-        </div>
-        <br />
-        <div class="markdown-content">
-          <a href="#" data-target="voice-content" data-source="recording.md"
-            >Voice messages</a
-          >
-          <div id="voice-content"></div>
-        </div>
-        <br />
-        <div class="markdown-content">
-          <a href="#" data-target="german-content" data-source="german.md"
-            >German</a
-          >
-          <div id="german-content"></div>
-        </div>
-        <br />
-        <div class="markdown-content">
-          <a href="#" data-target="english-content" data-source="english.md"
-            >English</a
-          >
-          <div id="english-content"></div>
-        </div>
-        <br />
-        <div class="markdown-content">
-          <a href="#" data-target="spanish-content" data-source="spanish.md"
-            >Spanish</a
-          >
-          <div id="spanish-content"></div>
-        </div>
-        <br />
-        <div class="markdown-content">
-          <a href="#" data-target="untold-content" data-source="untold.md"
-            >Damn</a
-          >
-          <div id="untold-content"></div>
-        </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
     <script src="script.js"></script>
     <script>
-      document.querySelectorAll(".markdown-content a").forEach((link) => {
-        let isContentVisible = false;
-        let target = document.getElementById(link.dataset.target);
+      document.addEventListener("DOMContentLoaded", () => {
+        const link = document.querySelector(".markdown-content a");
+        const target = document.getElementById(link.dataset.target);
 
-        link.addEventListener("click", (event) => {
-          event.preventDefault();
-
-          if (isContentVisible) {
-            target.innerHTML = "";
-          } else {
-            fetch(link.dataset.source)
-              .then((response) => response.text())
-              .then((markdown) => {
-                const html = marked.parse(markdown);
-                target.innerHTML = html;
-              });
-          }
-
-          isContentVisible = !isContentVisible;
-        });
+        fetch(link.dataset.source)
+          .then((response) => response.text())
+          .then((markdown) => {
+            const html = marked.parse(markdown);
+            target.innerHTML = html;
+          });
       });
     </script>
   </body>
