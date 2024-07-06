@@ -1577,6 +1577,109 @@ select blank (bare)
 in react, rafc
 in react native, rnfes
 
+**ActivityIndicator**
+
+- Displays a circular loading indicator.
+
+**StatusBar**
+
+- Controls the app's status bar which typically shows time, network info, battery level, etc.
+
+**ScrollView**
+
+- Renders all child components at once, suitable for shorter lists.
+- Requires bounded height for proper functioning.
+- Use when the content size is reasonably small.
+
+**FlatList**
+
+- Renders items lazily and efficiently.
+- Ideal for long lists with dynamic content.
+- Supports features like separators, multiple columns, and infinite scroll.
+
+**SafeAreaView**
+
+- Renders content within safe area boundaries of iOS devices.
+- Automatically applies padding to accommodate status bars, notches, etc.
+- Example:
+
+  ```jsx
+  import { SafeAreaView } from "react-native";
+
+  function App() {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+        {/* Your content here */}
+      </SafeAreaView>
+    );
+  }
+  ```
+
+**Stack Navigator**
+
+- Foundation for navigating between routes.
+- Supports route animations and customization.
+- Example usage in Expo:
+
+  ```jsx
+  import { Stack } from "expo-router";
+
+  function Layout() {
+    return (
+      <Stack>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack>
+    );
+  }
+  ```
+
+**Drawer Navigator**
+
+- Navigation via a drawer from the edge of the screen.
+- Allows easy access to different screens.
+- Example:
+
+  ```jsx
+  import { createDrawerNavigator } from "@react-navigation/drawer";
+  import { NavigationContainer } from "@react-navigation/native";
+
+  function App() {
+    return (
+      <NavigationContainer>
+        <Drawer.Navigator>
+          <Drawer.Screen name="Home" component={HomeScreen} />
+          <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    );
+  }
+  ```
+
+**Platform-specific Modules**
+
+- Adjusts content based on platform (iOS, Android, web).
+- Enhances native experience.
+- Example:
+
+  ```jsx
+  import { Platform } from "react-native";
+
+  function App() {
+    return (
+      <React.Fragment>
+        {Platform.OS === "web" ? (
+          // Web-specific layout
+          <WebLayout />
+        ) : (
+          // Native-specific layout
+          <NativeLayout />
+        )}
+      </React.Fragment>
+    );
+  }
+  ```
+
 ## Learning Figma
 
 when you want line height, 16 (font size) \* 1.75
@@ -1741,6 +1844,617 @@ So make networking
 - Fit
 
 # Learning Vue
+
+- **Creating Vue App**:
+
+  - Use `createApp` to start a Vue application.
+  - Example:
+    ```js
+    import { createApp } from "vue";
+    const app = createApp({
+      /* root component options */
+    });
+    ```
+
+- **Root Component**:
+
+  - The object passed into `createApp` is a component.
+  - Import root component in single-file components:
+    ```js
+    import App from "./App.vue";
+    const app = createApp(App);
+    ```
+
+- **Component Tree**:
+
+  - Real applications use a tree of nested, reusable components.
+  - Example structure:
+    ```
+    App (root component)
+    ├─ TodoList
+    │  └─ TodoItem
+    │     ├─ TodoDeleteButton
+    │     └─ TodoEditButton
+    └─ TodoFooter
+       ├─ TodoClearButton
+       └─ TodoStatistics
+    ```
+
+- **Mounting the App**:
+
+  - Use `.mount(container)` to render the app:
+    ```html
+    <div id="app"></div>
+    ```
+    ```js
+    app.mount("#app");
+    ```
+
+- **In-DOM Root Component Template**:
+
+  - Template can be part of the component or in the mount container:
+    ```html
+    <div id="app">
+      <button @click="count++">{{ count }}</button>
+    </div>
+    ```
+    ```js
+    const app = createApp({
+      data() {
+        return { count: 0 };
+      },
+    });
+    app.mount("#app");
+    ```
+
+- **App Configurations**:
+
+  - Configure app-level options using `.config`:
+    ```js
+    app.config.errorHandler = (err) => {
+      /* handle error */
+    };
+    ```
+  - Register app-scoped assets:
+    ```js
+    app.component("TodoDeleteButton", TodoDeleteButton);
+    ```
+
+- **Multiple Application Instances**:
+
+  - Multiple Vue apps can co-exist on the same page:
+    ```js
+    const app1 = createApp({
+      /* ... */
+    });
+    app1.mount("#container-1");
+    const app2 = createApp({
+      /* ... */
+    });
+    app2.mount("#container-2");
+    ```
+
+- **API Preference**:
+
+  - Composition API is recommended.
+  - Toggle between Options API and Composition API as needed.
+
+- **Declaring Reactive State with `ref()`**:
+
+  - Import and use `ref` to create reactive state:
+    ```js
+    import { ref } from "vue";
+    const count = ref(0);
+    ```
+  - `ref` returns an object with a `.value` property.
+
+- **Using `ref` in Component**:
+
+  - Declare and return refs in `setup()`:
+    ```js
+    export default {
+      setup() {
+        const count = ref(0);
+        return { count };
+      },
+    };
+    ```
+  - Access `ref` directly in the template without `.value`:
+    ```html
+    <div>{{ count }}</div>
+    <button @click="count++">{{ count }}</button>
+    ```
+
+- **Functions and Event Handlers**:
+
+  - Define functions in `setup()` and return them:
+    ```js
+    export default {
+      setup() {
+        const count = ref(0);
+        function increment() {
+          count.value++;
+        }
+        return { count, increment };
+      },
+    };
+    ```
+  - Use functions as event handlers:
+    ```html
+    <button @click="increment">{{ count }}</button>
+    ```
+
+- **`<script setup>` Simplification**:
+
+  - Use `<script setup>` for a concise syntax:
+
+    ```vue
+    <script setup>
+    import { ref } from "vue";
+    const count = ref(0);
+    function increment() {
+      count.value++;
+    }
+    </script>
+
+    <template>
+      <button @click="increment">{{ count }}</button>
+    </template>
+    ```
+
+- **Why Use `ref()`**:
+
+  - Enables Vue to track changes and update the DOM automatically.
+  - Ref objects allow passing around reactive state.
+
+- **Deep Reactivity**:
+
+  - `ref` makes nested objects/arrays reactive:
+    ```js
+    const obj = ref({ nested: { count: 0 }, arr: ["foo", "bar"] });
+    ```
+
+- **`nextTick()` for DOM Updates**:
+
+  - Ensure DOM updates are completed:
+    ```js
+    import { nextTick } from "vue";
+    async function increment() {
+      count.value++;
+      await nextTick();
+    }
+    ```
+
+- **`reactive()` for Reactive Objects**:
+
+  - Make an object reactive:
+    ```js
+    import { reactive } from "vue";
+    const state = reactive({ count: 0 });
+    ```
+
+- **Limitations of `reactive()`**:
+
+  - Only works with object types, not primitives.
+  - Replacing reactive objects loses reactivity connection.
+  - Not destructure-friendly.
+
+- **Ref Unwrapping**:
+
+  - Automatic in templates and reactive objects:
+    ```js
+    const count = ref(0);
+    const state = reactive({ count });
+    ```
+
+- **Caveats**:
+  - No unwrapping in arrays/collections or nested properties without destructuring:
+    ```js
+    const books = reactive([ref("Vue 3 Guide")]);
+    console.log(books[0].value); // .value needed
+    ```
+
+### Only Works with Object Types, Not Primitives
+
+**Example**:
+
+```js
+import { reactive } from "vue";
+
+const count = reactive(0); // This will not work as expected
+console.log(count); // 0 (not reactive)
+```
+
+**Correct Way**:
+
+```js
+import { ref } from "vue";
+
+const count = ref(0);
+console.log(count.value); // 0 (reactive)
+```
+
+### Replacing Reactive Objects Loses Reactivity Connection
+
+**Example**:
+
+```js
+import { reactive } from "vue";
+
+let state = reactive({ count: 0 });
+
+// Initial state is reactive
+console.log(state.count); // 0
+
+// Replacing the entire object
+state = reactive({ count: 1 });
+
+// The original reactive connection is lost
+console.log(state.count); // 1 (new reactive object)
+```
+
+**Correct Way**:
+
+```js
+import { reactive } from "vue";
+
+let state = reactive({ count: 0 });
+
+// Update the existing reactive object
+state.count = 1;
+
+console.log(state.count); // 1 (still reactive)
+```
+
+### Not Destructure-Friendly
+
+**Example**:
+
+```js
+import { reactive } from "vue";
+
+const state = reactive({ count: 0 });
+
+// Destructuring loses reactivity
+let { count } = state;
+count++;
+
+// Original state is not updated
+console.log(state.count); // 0 (reactivity lost)
+```
+
+**Correct Way**:
+
+```js
+import { reactive } from "vue";
+
+const state = reactive({ count: 0 });
+
+// Use the property directly to retain reactivity
+function increment() {
+  state.count++;
+}
+
+increment();
+console.log(state.count); // 1 (reactive)
+```
+
+In summary, these examples highlight how `reactive()` is limited to objects, loses its connection when the object is replaced, and is not suitable for destructuring when you want to maintain reactivity. Using `ref()` for primitives and avoiding replacing reactive objects or destructuring their properties ensures reactivity is preserved.
+
+### Components Basics
+
+Components allow us to split the UI into independent and reusable pieces, enabling isolated thinking for each piece. An application is often organized into a tree of nested components, similar to how native HTML elements are nested.
+
+#### Defining a Component
+
+**Single-File Components (SFCs)**:
+
+```vue
+<script setup>
+import { ref } from "vue";
+
+const count = ref(0);
+</script>
+
+<template>
+  <button @click="count++">You clicked me {{ count }} times.</button>
+</template>
+```
+
+- Defined in a `.vue` file.
+- Encapsulates JavaScript logic and template in a single file.
+
+**Without a Build Step**:
+
+```js
+import { ref } from "vue";
+
+export default {
+  setup() {
+    const count = ref(0);
+    return { count };
+  },
+  template: `
+    <button @click="count++">
+      You clicked me {{ count }} times.
+    </button>`,
+};
+```
+
+- Defined as a plain JavaScript object with Vue-specific options.
+- Template is inlined as a JavaScript string or referenced by an ID selector.
+
+#### Using a Component
+
+**Local Registration**:
+
+```vue
+<script setup>
+import ButtonCounter from "./ButtonCounter.vue";
+</script>
+
+<template>
+  <h1>Here is a child component!</h1>
+  <ButtonCounter />
+</template>
+```
+
+- Import child components in the parent component.
+- Automatically available in the template with `<script setup>`.
+
+**Global Registration**:
+
+```js
+import { createApp } from "vue";
+import ButtonCounter from "./ButtonCounter.vue";
+
+const app = createApp({});
+app.component("ButtonCounter", ButtonCounter);
+app.mount("#app");
+```
+
+- Makes a component available to all components in the app without importing it.
+
+**Multiple Instances**:
+
+```vue
+<template>
+  <h1>Here are many child components!</h1>
+  <ButtonCounter />
+  <ButtonCounter />
+  <ButtonCounter />
+</template>
+```
+
+- Each instance maintains its own state.
+
+#### Passing Props
+
+Props allow passing data from parent to child components.
+
+**Declaring Props**:
+
+```vue
+<!-- BlogPost.vue -->
+<script setup>
+defineProps(["title"]);
+</script>
+
+<template>
+  <h4>{{ title }}</h4>
+</template>
+```
+
+- `defineProps` macro is used inside `<script setup>` to declare props.
+
+**Using Props in Parent Component**:
+
+```vue
+<template>
+  <BlogPost title="My journey with Vue" />
+  <BlogPost title="Blogging with Vue" />
+  <BlogPost title="Why Vue is so fun" />
+</template>
+```
+
+**Dynamic Props with `v-for`**:
+
+```js
+const posts = ref([
+  { id: 1, title: "My journey with Vue" },
+  { id: 2, title: "Blogging with Vue" },
+  { id: 3, title: "Why Vue is so fun" },
+]);
+```
+
+```vue
+<template>
+  <BlogPost v-for="post in posts" :key="post.id" :title="post.title" />
+</template>
+```
+
+#### Listening to Events
+
+Components can communicate with parents using custom events.
+
+**Emitting Events**:
+
+```vue
+<!-- BlogPost.vue -->
+<template>
+  <div class="blog-post">
+    <h4>{{ title }}</h4>
+    <button @click="$emit('enlarge-text')">Enlarge text</button>
+  </div>
+</template>
+```
+
+```vue
+<!-- Parent Component -->
+<template>
+  <BlogPost ... @enlarge-text="postFontSize += 0.1" />
+</template>
+```
+
+**Declaring Emitted Events**:
+
+```vue
+<script setup>
+defineProps(["title"]);
+defineEmits(["enlarge-text"]);
+</script>
+```
+
+#### Content Distribution with Slots
+
+Slots allow passing content to a component.
+
+**Using Slots**:
+
+```vue
+<!-- AlertBox.vue -->
+<template>
+  <div class="alert-box">
+    <strong>This is an Error for Demo Purposes</strong>
+    <slot />
+  </div>
+</template>
+```
+
+```vue
+<template>
+  <AlertBox> Something bad happened. </AlertBox>
+</template>
+```
+
+#### Dynamic Components
+
+Switch between components dynamically using the `<component>` element.
+
+**Dynamic Switching**:
+
+```vue
+<template>
+  <component :is="tabs[currentTab]"></component>
+</template>
+```
+
+- Value of `:is` can be the name of a registered component or the component object.
+
+**Keeping Components Alive**:
+
+```vue
+<template>
+  <KeepAlive>
+    <component :is="tabs[currentTab]"></component>
+  </KeepAlive>
+</template>
+```
+
+#### In-DOM Template Parsing Caveats
+
+When writing templates directly in the DOM, consider these caveats:
+
+1. **Case Insensitivity**:
+
+   ```vue
+   <!-- kebab-case in HTML -->
+   <blog-post post-title="hello!" @update-post="onUpdatePost"></blog-post>
+   ```
+
+2. **Self-Closing Tags**:
+
+   ```vue
+   <!-- Explicit closing tags in DOM templates -->
+   <my-component></my-component>
+   ```
+
+3. **Element Placement Restrictions**:
+   ```vue
+   <table>
+     <tr is="vue:blog-post-row"></tr>
+   </table>
+   ```
+
+#### Conclusion
+
+Vue components allow for modular and reusable code organization. With props, events, slots, and dynamic switching, they provide a flexible system for building complex user interfaces.
+
+### Computed Properties in Vue
+
+- **Avoid Template Clutter**:
+
+  - Use computed properties for complex logic instead of in-template expressions.
+  - Example:
+
+    ```js
+    const author = reactive({
+      name: "John Doe",
+      books: [
+        "Vue 2 - Advanced Guide",
+        "Vue 3 - Basic Guide",
+        "Vue 4 - The Mystery",
+      ],
+    });
+
+    const publishedBooksMessage = computed(() => {
+      return author.books.length > 0 ? "Yes" : "No";
+    });
+    ```
+
+    ```vue
+    <template>
+      <p>Has published books:</p>
+      <span>{{ publishedBooksMessage }}</span>
+    </template>
+    ```
+
+- **Advantages of Computed Properties**:
+
+  - **Dependency Tracking**: Automatically tracks and updates based on reactive dependencies.
+  - **Caching**: Only re-evaluates when dependencies change, unlike methods which run every render.
+
+- **Computed vs. Methods**:
+
+  - **Computed Property**:
+    ```js
+    const publishedBooksMessage = computed(() => {
+      return author.books.length > 0 ? "Yes" : "No";
+    });
+    ```
+  - **Method**:
+    ```js
+    function calculateBooksMessage() {
+      return author.books.length > 0 ? "Yes" : "No";
+    }
+    ```
+  - **Key Difference**: Computed properties cache results; methods do not.
+
+- **Writable Computed Properties**:
+
+  - Example:
+
+    ```vue
+    <script setup>
+    import { ref, computed } from "vue";
+
+    const firstName = ref("John");
+    const lastName = ref("Doe");
+
+    const fullName = computed({
+      get() {
+        return firstName.value + " " + lastName.value;
+      },
+      set(newValue) {
+        [firstName.value, lastName.value] = newValue.split(" ");
+      },
+    });
+    </script>
+    ```
+
+- **Best Practices**:
+  - **Side-Effect Free**: Ensure getters perform pure computations only.
+  - **Avoid Mutating Computed Values**: Treat computed values as read-only snapshots; update the source state instead.
 
 ### Attribute Bindings in Vue
 
@@ -2035,7 +2749,9 @@ Vue provides a set of built-in directives such as `v-if`, `v-for`, `v-model`, et
 
 Dynamic components refer to the ability to dynamically switch between different components based on certain conditions or user interactions. This is achieved using the `component` element and the `is` attribute.
 
----
+# <to-do-form/> vs <ToDoForm/>
+
+## Both <ToDoForm /> and <to-do-form /> work because Vue.js normalizes component names and HTML is case-insensitive. However, it's recommended to use kebab-case in templates for consistency and adherence to Vue.js best practices.
 
 # Learning Node
 
@@ -2811,3 +3527,5 @@ Relative Positioning: Similar to static, but elements can be moved relative to t
   ```
 
 This concise overview introduces the basics of creating and working with objects in JavaScript, including accessing and modifying properties, using constructors, and understanding `this`.
+
+---
