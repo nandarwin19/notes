@@ -3529,3 +3529,165 @@ Relative Positioning: Similar to static, but elements can be moved relative to t
 This concise overview introduces the basics of creating and working with objects in JavaScript, including accessing and modifying properties, using constructors, and understanding `this`.
 
 ---
+
+# Learning Vue note
+
+why we use computed in vue?
+
+It is not recommanded to write that logic in template. Better to write it using computed property.
+
+Sure! Here's an example that demonstrates why it's better to use a `computed` property instead of writing logic directly in the template.
+
+### Without Computed Property (Logic in Template)
+
+```html
+<template>
+  <div>
+    <p>Original message: {{ message }}</p>
+    <p>Reversed message: {{ message.split('').reverse().join('') }}</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        message: "Hello Vue.js!",
+      };
+    },
+  };
+</script>
+```
+
+### With Computed Property (Recommended)
+
+```html
+<template>
+  <div>
+    <p>Original message: {{ message }}</p>
+    <p>Reversed message: {{ reversedMessage }}</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        message: "Hello Vue.js!",
+      };
+    },
+    computed: {
+      reversedMessage() {
+        return this.message.split("").reverse().join("");
+      },
+    },
+  };
+</script>
+```
+
+### Explanation
+
+- **Without Computed Property**: The logic to reverse the message is directly in the template. This can lead to repeated execution of the logic on each render, making the template harder to read and less efficient.
+- **With Computed Property**: The logic to reverse the message is moved to a `computed` property. This makes the template cleaner, easier to read, and the computed property is cached, improving performance by recalculating only when the `message` changes.
+
+## Event handling (v-on)
+
+eg: v-on:click="increment"
+shortcut: @click="increment"
+
+### watch vs watchEffect in vue
+
+### Vue's `watch` vs `watchEffect`
+
+**Overview:**
+If you're transitioning from Vue 2 to Vue 3 or learning Vue 3's Composition API, understanding the differences between `watch` and `watchEffect` is crucial. Both are used to handle reactivity and side effects, but they serve different purposes and have distinct behaviors.
+
+**`watch`**:
+
+- **Purpose**: Observes and reacts to changes in specific reactive data sources.
+- **Usage**:
+  - Requires explicit specification of the reactive sources to watch.
+  - Can handle multiple reactive sources.
+  - The callback function receives new and old values.
+- **Example**:
+
+  ```javascript
+  import { watch } from "vue";
+
+  const state = reactive({ count: 0, name: "Piotr" });
+
+  watch(
+    () => state.count,
+    (newCount, oldCount) => {
+      console.log(`Count changed from ${oldCount} to ${newCount}`);
+    }
+  );
+
+  watch(
+    [() => state.count, () => state.name],
+    ([newCount, newName], [oldCount, oldName]) => {
+      console.log(`Count changed from ${oldCount} to ${newCount}`);
+      console.log(`Name changed from ${oldName} to ${newName}`);
+    }
+  );
+  ```
+
+- **Pros**:
+  - Precise control over reactive properties.
+  - Suitable for complex side effects.
+  - Lazy by default (doesn't run immediately).
+- **Cons**:
+  - Requires manual specification of dependencies.
+
+**`watchEffect`**:
+
+- **Purpose**: Runs a function immediately and automatically re-runs it whenever any reactive dependency inside the function changes.
+- **Usage**:
+  - Automatically tracks all reactive dependencies within the function.
+  - Does not receive old and new values directly.
+- **Example**:
+
+  ```javascript
+  import { reactive, watchEffect } from "vue";
+
+  const state = reactive({ count: 0, name: "Piotr" });
+
+  watchEffect(() => {
+    console.log(`Count is now ${state.count}`);
+    console.log(`Name is now ${state.name}`);
+  });
+  ```
+
+- **Pros**:
+  - Automatically tracks dependencies.
+  - Ideal for straightforward reactivity.
+  - Runs immediately upon declaration.
+- **Cons**:
+  - Less precise control.
+  - May re-run more often if many dependencies are involved.
+
+**Key Differences**:
+
+- **Dependency Tracking**:
+  - `watch`: Tracks specific reactive sources.
+  - `watchEffect`: Automatically tracks all dependencies within the function.
+- **Control**:
+  - `watch`: Allows manual control over which properties trigger the side effect.
+  - `watchEffect`: More declarative, less setup.
+- **Execution Timing**:
+  - `watch`: Lazy by default; does not run immediately.
+  - `watchEffect`: Runs immediately when declared.
+
+**When to Use**:
+
+- **Use `watch`**:
+  - When you need precise control over specific state changes.
+  - When you need to access both new and old values.
+  - For complex side effects tied to specific reactive properties.
+- **Use `watchEffect`**:
+  - For simpler, more declarative reactivity.
+  - When you want to avoid manually specifying dependencies.
+  - For straightforward side effects involving multiple reactive properties.
+
+**Conclusion**:
+`watch` and `watchEffect` are powerful tools in Vue 3's Composition API. Understanding their differences and appropriate use cases will help you handle reactivity effectively in your applications.
